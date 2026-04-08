@@ -1,0 +1,353 @@
+index.<i class="fa fa-html5
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اردو قواعد و انشاء - Study Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --metallic-pink: #fbcfe8;
+            --deep-pink: #ec4899;
+            --skin-gradient: linear-gradient(135deg, #ffe4e1 0%, #ffdbac 100%);
+            --metal-shine: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+        }
+
+        body {
+            background: var(--skin-gradient);
+            font-family: 'Noto Nastaliq Urdu', serif;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+
+        .metallic-card {
+            background: linear-gradient(145deg, #ffffff, #fce7f3);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            box-shadow: 10px 10px 20px #eec5d5, -10px -10px 20px #ffffff;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metallic-card::after {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: var(--metal-shine);
+            transform: rotate(45deg);
+            transition: 0.6s;
+            pointer-events: none;
+        }
+
+        .metallic-card:hover::after {
+            top: 100%;
+            left: 100%;
+        }
+
+        .metallic-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 15px 15px 30px #eec5d5, -15px -15px 30px #ffffff;
+        }
+
+        .bold-text {
+            font-weight: 900;
+            color: #be185d;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .car-container {
+            perspective: 1000px;
+        }
+
+        .race-car {
+            animation: drive 4s infinite linear;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+        }
+
+        @keyframes drive {
+            0% { transform: translateX(-10%) rotateY(0deg); }
+            45% { transform: translateX(10%) rotateY(0deg); }
+            50% { transform: translateX(10%) rotateY(180deg); }
+            95% { transform: translateX(-10%) rotateY(180deg); }
+            100% { transform: translateX(-10%) rotateY(0deg); }
+        }
+
+        .section-header {
+            background: linear-gradient(to right, #ec4899, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 3px solid #f9a8d4;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-box {
+            background: #111;
+            color: #ff00ff;
+            font-family: 'Poppins', sans-serif;
+            border-left: 5px solid #ff00ff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .topic-link {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .topic-link:active {
+            transform: scale(0.95);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffe4e1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ec4899;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <!-- Header & Motivation Section -->
+    <header class="max-w-6xl mx-auto mb-16 text-center">
+        <div class="car-container mb-6">
+            <svg class="race-car mx-auto w-48 h-24" viewBox="0 0 200 100">
+                <!-- Simple SVG Race Car -->
+                <rect x="20" y="40" width="160" height="30" rx="15" fill="#ec4899" />
+                <path d="M50 40 L70 20 L130 20 L150 40 Z" fill="#f472b6" />
+                <circle cx="50" cy="70" r="12" fill="#333" />
+                <circle cx="150" cy="70" r="12" fill="#333" />
+                <rect x="160" y="30" width="10" height="20" fill="#be185d" /> <!-- Spoiler -->
+                <rect x="75" y="25" width="40" height="10" fill="white" opacity="0.5" /> <!-- Window -->
+            </svg>
+        </div>
+        
+        <div class="quote-box p-4 rounded-lg inline-block shadow-2xl animate-pulse">
+            <h2 class="text-2xl md:text-3xl font-bold">ARSLAN AND RATHORE GO COOK!</h2>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-black mt-8 text-pink-700 leading-relaxed">
+            اردو قواعد و انشاء
+        </h1>
+        <p class="text-lg text-pink-600 font-bold mt-2">فیڈرل بورڈ (FBISE) کے امتحانی معیار کے مطابق</p>
+    </header>
+
+    <!-- Navigation Shortcuts -->
+    <nav class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <a href="#section1" class="metallic-card p-4 text-center font-bold text-pink-700 hover:bg-pink-100">اسم کی اقسام</a>
+        <a href="#section3" class="metallic-card p-4 text-center font-bold text-pink-700 hover:bg-pink-100">فعل کی اقسام</a>
+        <a href="#section6" class="metallic-card p-4 text-center font-bold text-pink-700 hover:bg-pink-100">علمِ بیان</a>
+        <a href="#section9" class="metallic-card p-4 text-center font-bold text-pink-700 hover:bg-pink-100">انشاء پردازی</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto space-y-12 pb-20">
+
+        <!-- Topic 1 -->
+        <section id="section1" class="metallic-card p-8 animate-slide-in" style="animation-delay: 0.1s;">
+            <h2 class="section-header text-3xl font-bold">1. اسم کی اقسام (معنی اور بناوٹ کے لحاظ سے)</h2>
+            <div class="space-y-6 text-xl leading-loose">
+                <div>
+                    <h3 class="bold-text text-2xl mb-2">اسمِ معرفہ (اسمِ خاص)</h3>
+                    <p>وہ اسم جو کسی خاص شخص، جگہ یا چیز کی پہچان کرائے۔</p>
+                    <ul class="list-disc pr-8 mt-2 space-y-2">
+                        <li><strong>خطاب:</strong> وہ اعزازی نام جو حکومت یا قوم کی طرف سے کسی بڑی خدمت پر دیا جائے۔<br>مثال: شمس العلماء مولوی ذکاء اللہ، نشانِ حیدر پانے والے میجر عزیز بھٹی۔</li>
+                        <li><strong>لقب:</strong> وہ نام جو کسی خاص خوبی کی وجہ سے عوام میں مشہور ہو جائے۔<br>مثال: حضرت ابراہیم علیہ السلام کا لقب خلیل اللہ ہے، قائدِ اعظم کا لقب بابائے قوم ہے۔</li>
+                        <li><strong>تخلص:</strong> وہ مختصر نام جو شعراء اپنے کلام میں استعمال کرتے ہیں۔<br>مثال: مرزا اسد اللہ خان غالب، الطاف حسین حالی۔</li>
+                        <li><strong>کنیت:</strong> وہ نام جو والدین یا اولاد کی نسبت سے پکارا جائے۔<br>مثال: ابنِ مریم (مریم کا بیٹا)، ابو القاسم (قاسم کا باپ)۔</li>
+                    </ul>
+                </div>
+
+                <div class="pt-4 border-t border-pink-200">
+                    <h3 class="bold-text text-2xl mb-2">اسمِ نکرہ (اسمِ عام)</h3>
+                    <p>وہ اسم جو کسی عام چیز، جگہ یا جاندار کے لیے بولا جائے۔</p>
+                    <ul class="grid md:grid-cols-2 gap-4 mt-4">
+                        <li class="bg-pink-50 p-3 rounded"><strong>اسمِ آلہ:</strong> وہ اسم جو کسی اوزار یا ہتھیار کا نام ہو۔ مثال: وہ قلم سے لکھتا ہے، باورچی نے چاقو سے سبزی کاٹی۔</li>
+                        <li class="bg-pink-50 p-3 rounded"><strong>اسمِ صوت:</strong> وہ اسم جو کسی جاندار یا بے جان چیز کی مخصوص آواز کو ظاہر کرے۔ مثال: کوے کی کائیں کائیں، بارش کی ٹپ ٹپ۔</li>
+                        <li class="bg-pink-50 p-3 rounded"><strong>اسمِ تصغیر:</strong> وہ اسم جو کسی چیز کی چھوٹائی ظاہر کرے۔ مثال: باغ سے باغیچہ، دیگ سے دیگچی۔</li>
+                        <li class="bg-pink-50 p-3 rounded"><strong>اسمِ مکبر:</strong> وہ اسم جو کسی چیز کی بڑائی ظاہر کرے۔ مثال: راہ سے شاہراہ، بات سے بتنگڑ۔</li>
+                    </ul>
+                    <p class="mt-4"><strong>اسمِ ظرف:</strong> وہ اسم جو جگہ یا وقت کو ظاہر کرے۔<br>مثال (ظرفِ مکاں): سکول، میدان۔ مثال (ظرفِ زماں): دوپہر، سال۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 2 -->
+        <section id="section2" class="metallic-card p-8 animate-slide-in" style="animation-delay: 0.2s;">
+            <h2 class="section-header text-3xl font-bold">2. اسمِ مشتق کی اقسام</h2>
+            <p class="mb-4">وہ اسم جو کسی مصدر (مثلاً: لکھنا، پڑھنا) سے بنے ہوں۔</p>
+            <div class="grid md:grid-cols-2 gap-6 text-lg">
+                <div class="p-4 bg-white/50 rounded-lg">
+                    <h4 class="bold-text">اسمِ فاعل</h4>
+                    <p>کام کرنے والے کو ظاہر کرتا ہے۔</p>
+                    <p><strong>قیاسی:</strong> لکھنے والا۔ <strong>سماعی:</strong> ڈاکیا۔</p>
+                </div>
+                <div class="p-4 bg-white/50 rounded-lg">
+                    <h4 class="bold-text">اسمِ مفعول</h4>
+                    <p>جس پر کام ہوا ہو۔ مثال: وہ ایک مظلوم شخص ہے، آپ کا لکھا ہوا خط مل گیا۔</p>
+                </div>
+                <div class="p-4 bg-white/50 rounded-lg">
+                    <h4 class="bold-text">اسمِ حالیہ</h4>
+                    <p>مثال: بچہ روتا ہوا گھر آیا۔</p>
+                </div>
+                <div class="p-4 bg-white/50 rounded-lg">
+                    <h4 class="bold-text">حاصلِ مصدر</h4>
+                    <p>مثال: آپ کی مسکراہٹ بہت اچھی ہے (مسکرانا سے)۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 3 -->
+        <section id="section3" class="metallic-card p-8 animate-slide-in" style="animation-delay: 0.3s;">
+            <h2 class="section-header text-3xl font-bold">3. فعل کی اقسام (Verb Types)</h2>
+            <div class="space-y-4 text-xl">
+                <div class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    <p><strong>فعلِ لازم:</strong> پرندہ اڑا، بچہ سو گیا۔</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    <p><strong>فعلِ متعدی:</strong> احمد نے کھانا کھایا۔</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    <p><strong>فعلِ ناقص:</strong> شاہد بیمار ہے۔ ('ہے' یہاں فعلِ ناقص ہے)۔</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    <p><strong>فعلِ معروف و مجہول:</strong> سلمہ نے کپڑے دھوئے (معروف)۔ شیشہ توڑ دیا گیا (مجہول)۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 4 & 5 Combined -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <section id="section4" class="metallic-card p-8 animate-slide-in">
+                <h2 class="section-header text-2xl font-bold">4. حروف کی اقسام</h2>
+                <ul class="space-y-2 text-lg">
+                    <li><strong>حروفِ عطف:</strong> اور، و</li>
+                    <li><strong>حروفِ تخصیص:</strong> ہی، بھی</li>
+                    <li><strong>حروفِ استدراک:</strong> لیکن، مگر</li>
+                    <li><strong>حروفِ ندا:</strong> اے، او</li>
+                    <li><strong>حروفِ تحسین:</strong> واہ واہ!</li>
+                </ul>
+            </section>
+            <section id="section5" class="metallic-card p-8 animate-slide-in">
+                <h2 class="section-header text-2xl font-bold">5. تراکیب (مرکبات)</h2>
+                <ul class="space-y-2 text-lg">
+                    <li><strong>مرکبِ اضافی:</strong> اسلم کی کتاب</li>
+                    <li><strong>مرکبِ توصیفی:</strong> نیک لڑکا</li>
+                    <li><strong>مرکبِ جاری:</strong> چھت پر</li>
+                    <li><strong>جملہ اسمیہ:</strong> اسلم ذہین ہے۔</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Topic 6 -->
+        <section id="section6" class="metallic-card p-8 animate-slide-in">
+            <h2 class="section-header text-3xl font-bold">6. علمِ بیان و بدیع (ادبی قواعد)</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-lg">
+                <div class="border-r-4 border-pink-300 pr-4">
+                    <h4 class="bold-text text-xl">تشبیہ</h4>
+                    <p>ایک چیز کو دوسری جیسا قرار دینا۔ ارکان: مشبہ، مشبہ بہ، حرفِ تشبیہ، وجہِ شبہ، غرضِ تشبیہ۔</p>
+                </div>
+                <div class="border-r-4 border-pink-300 pr-4">
+                    <h4 class="bold-text text-xl">استعارہ</h4>
+                    <p>لفظ کو مجازی معنوں میں استعمال کرنا۔ مثال: "میرا چاند آ گیا"۔</p>
+                </div>
+                <div class="col-span-full mt-4 p-4 bg-pink-50 rounded">
+                    <h4 class="bold-text">صنائع بدائع</h4>
+                    <p><strong>تلمیح:</strong> تاریخی واقعہ (آتشِ نمرود)۔ <strong>صنعتِ تضاد:</strong> الٹ الفاظ۔ <strong>مراعات النظیر:</strong> مناسبتی الفاظ (باغ، بلبل)۔</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 7, 8, 9 -->
+        <section id="section7" class="metallic-card p-8">
+            <h2 class="section-header text-3xl font-bold">7-9. رموزِ اوقاف اور انشاء پردازی</h2>
+            <div class="space-y-6 text-xl">
+                <div class="flex flex-wrap gap-4">
+                    <span class="bg-white px-4 py-2 rounded-full shadow">سکتہ (،)</span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow">ختمہ (۔)</span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow">واوین (" ")</span>
+                    <span class="bg-white px-4 py-2 rounded-full shadow">فجائیہ (!)</span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div>
+                        <h4 class="bold-text">امتحانی نکات</h4>
+                        <ul class="list-disc pr-6">
+                            <li>واحد جمع (سالم و مکسر)</li>
+                            <li>سابقے اور لاحقے</li>
+                            <li>تذکیر و تانیث</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="bold-text">تحریری مہارتیں</h4>
+                        <ul class="list-disc pr-6">
+                            <li>مضمون نگاری</li>
+                            <li>تلخیص نگاری</li>
+                            <li>آپ بیتی</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-10 mt-10 border-t border-pink-200">
+        <p class="bold-text text-2xl">Arslan & Rathore Study Network</p>
+        <p class="text-pink-500 mt-2">تیار کردہ برائے تعلیمی مقاصد</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-slide-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>" aria-hidden="true"></i>

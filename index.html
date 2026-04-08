@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اردو قواعد - مطالعہ گاہ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-hot: #ff2d78;
+    --pink-light: #ff80b0;
+    --pink-pale: #ffd6e7;
+    --skin-1: #f5c9a0;
+    --skin-2: #e8a87c;
+    --skin-3: #d4896a;
+    --metal-light: #f0e8ef;
+    --metal-mid: #c9a8c0;
+    --metal-dark: #7a3a5c;
+    --metal-shine: #fff0f8;
+    --chrome: linear-gradient(135deg, #ffe8f5 0%, #f5b8d8 25%, #ff2d78 50%, #f5b8d8 75%, #ffe8f5 100%);
+    --skin-grad: linear-gradient(135deg, #f5c9a0 0%, #e8a87c 40%, #d4896a 70%, #c07050 100%);
+    --glow: 0 0 20px rgba(255,45,120,0.5), 0 0 40px rgba(255,45,120,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: linear-gradient(160deg, #1a0010 0%, #3d0028 30%, #1a0010 60%, #2d1020 100%);
+    min-height: 100vh;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    color: #ffe8f5;
+    overflow-x: hidden;
+  }
+
+  /* Metallic mesh background */
+  body::before {
+    content: '';
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(255,45,120,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,45,120,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 40px 20px 20px;
+    overflow: hidden;
+  }
+
+  .hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 15px rgba(255,45,120,0.8));
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--skin-1);
+    margin-top: 8px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(245,201,160,0.5);
+  }
+
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* ===== RACE CAR STRIP ===== */
+  .racetrack {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin: 20px 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0a0005 0%, #1a0010 50%, #0a0005 100%);
+    border-top: 2px solid var(--pink-hot);
+    border-bottom: 2px solid var(--pink-hot);
+    box-shadow: 0 0 20px rgba(255,45,120,0.4);
+  }
+
+  .track-line {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 100%; height: 3px;
+    background: repeating-linear-gradient(90deg, var(--pink-hot) 0px, var(--pink-hot) 30px, transparent 30px, transparent 60px);
+    opacity: 0.4;
+    animation: trackMove 1s linear infinite;
+  }
+
+  @keyframes trackMove {
+    from { background-position: 0 0; }
+    to { background-position: -60px 0; }
+  }
+
+  .race-car {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 2.5rem;
+    animation: carRace 6s linear infinite;
+    filter: drop-shadow(0 0 10px #ff2d78);
+    z-index: 2;
+  }
+
+  @keyframes carRace {
+    0% { left: -80px; }
+    100% { left: calc(100% + 80px); }
+  }
+
+  .speed-lines {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    height: 20px;
+    animation: carRace 6s linear infinite;
+    z-index: 1;
+    margin-left: -60px;
+  }
+
+  .quote-banner {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 6px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    color: var(--skin-1);
+    text-shadow: 0 0 15px rgba(245,201,160,0.7);
+    letter-spacing: 1px;
+  }
+
+  .quote-banner span {
+    background: linear-gradient(90deg, var(--pink-hot), var(--skin-1), var(--pink-hot));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* ===== NAV BUTTONS ===== */
+  .nav-section {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .nav-btn {
+    background: linear-gradient(135deg, rgba(255,45,120,0.15) 0%, rgba(122,58,92,0.3) 100%);
+    border: 1.5px solid var(--pink-hot);
+    color: var(--pink-pale);
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(255,45,120,0.2), inset 0 1px 0 rgba(255,200,220,0.2);
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-btn::before {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,45,120,0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .nav-btn:hover::before { left: 100%; }
+  .nav-btn:hover {
+    background: linear-gradient(135deg, rgba(255,45,120,0.4), rgba(200,80,120,0.5));
+    box-shadow: var(--glow);
+    transform: translateY(-2px) scale(1.03);
+    color: #fff;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .content-wrapper {
+    position: relative; z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px 20px 60px;
+  }
+
+  /* ===== TOPIC CARDS ===== */
+  .topic-card {
+    background: linear-gradient(135deg,
+      rgba(245,201,160,0.07) 0%,
+      rgba(255,45,120,0.08) 40%,
+      rgba(122,58,92,0.15) 100%
+    );
+    border: 1px solid rgba(255,45,120,0.3);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,45,120,0.1);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .topic-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .topic-card:hover {
+    border-color: var(--pink-hot);
+    box-shadow: 0 8px 40px rgba(255,45,120,0.25), var(--glow);
+    transform: translateY(-3px);
+  }
+
+  /* Card Header */
+  .card-header {
+    background: linear-gradient(90deg,
+      rgba(255,45,120,0.25) 0%,
+      rgba(245,201,160,0.15) 50%,
+      rgba(255,45,120,0.2) 100%
+    );
+    border-bottom: 1px solid rgba(255,45,120,0.4);
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-header::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink-hot), var(--skin-1), var(--pink-hot), transparent);
+    animation: borderFlow 3s ease-in-out infinite;
+  }
+
+  @keyframes borderFlow {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .card-num {
+    width: 42px; height: 42px;
+    background: var(--chrome);
+    background-size: 200% 200%;
+    animation: shimmer 3s ease-in-out infinite;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a0010;
+    box-shadow: 0 0 12px rgba(255,45,120,0.6), inset 0 1px 3px rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--skin-1), var(--pink-light), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex: 1;
+    text-shadow: none;
+  }
+
+  .card-toggle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    color: var(--pink-hot);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+  }
+
+  .card-toggle.open { transform: rotate(180deg); }
+
+  /* Card Body */
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .card-body.open { max-height: 5000px; }
+
+  .card-body-inner {
+    padding: 20px 24px;
+  }
+
+  /* Text content styles */
+  .card-body-inner p,
+  .card-body-inner li,
+  .card-body-inner div {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    line-height: 2.2;
+    font-weight: 700;
+    color: #f5e0f0;
+  }
+
+  /* Sub headers inside cards */
+  .sub-heading {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    font-weight: 700;
+    color: var(--skin-1);
+    background: linear-gradient(90deg, rgba(245,201,160,0.12), transparent);
+    border-right: 3px solid var(--pink-hot);
+    padding: 6px 12px 6px 0;
+    margin: 14px 0 8px;
+    border-radius: 4px 0 0 4px;
+    text-shadow: 0 0 8px rgba(245,201,160,0.4);
+  }
+
+  /* Definition highlight */
+  .def-box {
+    background: linear-gradient(135deg, rgba(255,45,120,0.08), rgba(245,201,160,0.06));
+    border: 1px solid rgba(255,45,120,0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    position: relative;
+  }
+
+  .def-box::before {
+    content: '✦';
+    position: absolute;
+    top: -8px; right: 12px;
+    color: var(--pink-hot);
+    font-size: 1rem;
+    background: #1a0010;
+    padding: 0 4px;
+  }
+
+  /* Example badges */
+  .example-label {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--pink-hot), var(--skin-2));
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  /* ===== METALLIC DIVIDER ===== */
+  .metal-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink-hot), var(--skin-1), var(--pink-hot), transparent);
+    margin: 20px 0;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255,45,120,0.4);
+  }
+
+  /* ===== FLOATING PARTICLES ===== */
+  .particles {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--pink-hot);
+    box-shadow: 0 0 6px var(--pink-hot);
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pink-hot), var(--skin-1));
+    box-shadow: 0 0 10px var(--pink-hot);
+    z-index: 999;
+    transition: width 0.2s;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 30px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    color: var(--metal-mid);
+    border-top: 1px solid rgba(255,45,120,0.2);
+    letter-spacing: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #1a0010; }
+  ::-webkit-scrollbar-thumb { background: var(--pink-hot); border-radius: 3px; }
+
+  /* Back to top btn */
+  .back-top {
+    position: fixed;
+    bottom: 30px; left: 30px;
+    width: 50px; height: 50px;
+    background: var(--chrome);
+    background-size: 200% 200%;
+    animation: shimmer 2s linear infinite;
+    border: none; border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: var(--glow);
+    color: #1a0010;
+    font-weight: 900;
+    z-index: 100;
+    transition: transform 0.3s;
+  }
+  .back-top:hover { transform: scale(1.15); }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Floating Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-title">اردو قواعد و انشاء</div>
+  <div class="hero-sub">FBISE امتحانی معیار · مکمل مطالعہ گاہ</div>
+</div>
+
+<!-- RACE CAR STRIP -->
+<div class="racetrack">
+  <div class="track-line"></div>
+  <div class="race-car">🏎️</div>
+</div>
+
+<div class="quote-banner">
+  <span>⚡ "ARSLAN AND RATHORE GO COOK! — پڑھو، جیتو، راج کرو! ⚡"</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav-section" id="nav">
+  <a class="nav-btn" onclick="scrollTo('topic1')">۱. اسم کی اقسام</a>
+  <a class="nav-btn" onclick="scrollTo('topic2')">۲. اسمِ مشتق</a>
+  <a class="nav-btn" onclick="scrollTo('topic3')">۳. فعل کی اقسام</a>
+  <a class="nav-btn" onclick="scrollTo('topic4')">۴. حروف کی اقسام</a>
+  <a class="nav-btn" onclick="scrollTo('topic5')">۵. تراکیب و جملہ</a>
+  <a class="nav-btn" onclick="scrollTo('topic6')">۶. علمِ بیان و بدیع</a>
+  <a class="nav-btn" onclick="scrollTo('topic7')">۷. رموزِ اوقاف</a>
+  <a class="nav-btn" onclick="scrollTo('topic8')">۸. معروضی قواعد</a>
+  <a class="nav-btn" onclick="scrollTo('topic9')">۹. انشاء پردازی</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="content-wrapper">
+
+  <!-- CARD 1 -->
+  <div class="topic-card" id="topic1">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۱</div>
+      <div class="card-title">اسم کی اقسام (معنی اور بناوٹ کے لحاظ سے)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="sub-heading">اسمِ معرفہ (اسمِ خاص)</div>
+        <div class="def-box">وہ اسم جو کسی خاص شخص، جگہ یا چیز کی پہچان کرائے۔</div>
+
+        <div class="sub-heading">خطاب <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اعزازی نام جو حکومت یا قوم کی طرف سے کسی بڑی خدمت پر دیا جائے۔</p>
+        <p>مثال: شمس العلماء مولوی ذکاء اللہ، نشانِ حیدر پانے والے میجر عزیز بھٹی۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">لقب <span class="example-label">EXAMPLE</span></div>
+        <p>وہ نام جو کسی خاص خوبی کی وجہ سے عوام میں مشہور ہو جائے۔</p>
+        <p>مثال: حضرت ابراہیم علیہ السلام کا لقب خلیل اللہ ہے، قائدِ اعظم کا لقب بابائے قوم ہے۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">تخلص <span class="example-label">EXAMPLE</span></div>
+        <p>وہ مختصر نام جو شعراء اپنے کلام میں استعمال کرتے ہیں۔</p>
+        <p>مثال: مرزا اسد اللہ خان غالب، الطاف حسین حالی۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">کنیت <span class="example-label">EXAMPLE</span></div>
+        <p>وہ نام جو والدین یا اولاد کی نسبت سے پکارا جائے۔</p>
+        <p>مثال: ابنِ مریم (مریم کا بیٹا)، ابو القاسم (قاسم کا باپ)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ نکرہ (اسمِ عام)</div>
+        <div class="def-box">وہ اسم جو کسی عام چیز، جگہ یا جاندار کے لیے بولا جائے۔</div>
+
+        <div class="sub-heading">اسمِ آلہ <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو کسی اوزار یا ہتھیار کا نام ہو۔</p>
+        <p>مثال: وہ قلم سے لکھتا ہے، باورچی نے چاقو سے سبزی کاٹی۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ صوت <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو کسی جاندار یا بے جان چیز کی مخصوص آواز کو ظاہر کرے۔</p>
+        <p>مثال: کوے کی کائیں کائیں، بارش کی ٹپ ٹپ۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ تصغیر <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو کسی چیز کی چھوٹائی (مختصر ہونا) ظاہر کرے۔</p>
+        <p>مثال: باغ سے باغیچہ، دیگ سے دیگچی۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ مکبر <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو کسی چیز کی بڑائی ظاہر کرے۔</p>
+        <p>مثال: راہ سے شاہراہ، بات سے بتنگڑ۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ ظرف <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو جگہ یا وقت کو ظاہر کرے۔</p>
+        <p>مثال (ظرفِ مکاں): سکول، میدان۔ مثال (ظرفِ زماں): دوپہر، سال۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="topic-card" id="topic2">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۲</div>
+      <div class="card-title">اسمِ مشتق کی اقسام</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="def-box">وہ اسم جو کسی مصدر (مثلاً: لکھنا، پڑھنا) سے بنے ہوں۔</div>
+
+        <div class="sub-heading">اسمِ فاعل</div>
+        <p>کام کرنے والے کو ظاہر کرتا ہے۔</p>
+        <p><strong>قیاسی (اصولی):</strong> جو مقررہ قاعدے سے بنے۔ مثلاً: لکھنے والا، پڑھنے والا۔</p>
+        <p><strong>سماعی (غیر اصولی):</strong> جو اہل زبان سے سنا گیا ہو۔ مثلاً: ڈاکیا، باغبان۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ مفعول <span class="example-label">EXAMPLE</span></div>
+        <p>جس پر کام ہوا ہو۔</p>
+        <p>مثال: وہ ایک مظلوم شخص ہے، آپ کا لکھا ہوا خط مل گیا۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ حالیہ <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو فاعل یا مفعول کی موجودہ حالت بیان کرے۔</p>
+        <p>مثال: بچہ روتا ہوا گھر آیا۔ (یہاں 'روتا ہوا' حالت ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">اسمِ معاوضہ <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو کسی کام کی اجرت یا قیمت کے طور پر بولا جائے۔</p>
+        <p>مثال: اس قمیض کی سلائی سو روپے ہے، گندم کی کٹائی جاری ہے۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حاصلِ مصدر <span class="example-label">EXAMPLE</span></div>
+        <p>وہ اسم جو مصدر سے بنے اور مصدر کے معنی دے۔</p>
+        <p>مثال: آپ کی مسکراہٹ بہت اچھی ہے (مسکرانا سے)، سفر کی تھکاوٹ (تھکنا سے)۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="topic-card" id="topic3">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۳</div>
+      <div class="card-title">فعل کی اقسام (Verb Types)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="sub-heading">فعلِ لازم <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">وہ فعل جو صرف فاعل کے ملنے سے بات مکمل کر دے (مفعول کی ضرورت نہ ہو)۔</div>
+        <p>مثال: پرندہ اڑا، بچہ سو گیا۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">فعلِ متعدی <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">جس میں فاعل کے ساتھ مفعول (Object) بھی ضروری ہو۔</div>
+        <p>مثال: احمد نے کھانا کھایا۔ (یہاں 'کھانا' مفعول ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">فعلِ ناقص <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">وہ فعل جو کسی کام کا کرنا نہیں بلکہ کسی کیفیت کا ہونا ظاہر کرے۔</div>
+        <p>مثال: شاہد بیمار ہے۔ ('ہے' یہاں فعلِ ناقص ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">فعلِ معروف <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">جس کا فاعل (کام کرنے والا) معلوم ہو۔</div>
+        <p>مثال: سلمہ نے کپڑے دھوئے۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">فعلِ مجہول <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">جس کا فاعل معلوم نہ ہو بلکہ مفعول پر کام کا اثر دکھایا جائے۔</div>
+        <p>مثال: شیشہ توڑ دیا گیا۔ (پتہ نہیں کس نے توڑا)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">فعلِ مثبت و منفی <span class="example-label">EXAMPLE</span></div>
+        <p>"وہ آیا" (مثبت)، "وہ نہیں آیا" (منفی)۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="topic-card" id="topic4">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۴</div>
+      <div class="card-title">حروف کی اقسام</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="sub-heading">حروفِ عطف <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">دو لفظوں یا جملوں کو ملانے والے۔ (مثلاً: اور، و)۔</div>
+        <p>مثال: "صبح اور شام"۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ تخصیص <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">کسی بات پر زور دینے کے لیے۔ (مثلاً: ہی، بھی)۔</div>
+        <p>مثال: "آپ ہی نے یہ کہا تھا"۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ استدراک <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">پہلے جملے کا شک دور کرنے کے لیے۔ (مثلاً: لیکن، مگر)۔</div>
+        <p>مثال: "وہ ذہین ہے مگر سست ہے"۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ شرط و جزا <span class="example-label">EXAMPLE</span></div>
+        <p>اگر تم آؤ گے (شرط) تو میں چلوں گا (جزا)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ ندا <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">کسی کو بلانے کے لیے۔ (مثلاً: اے، او)۔</div>
+        <p>مثال: "اے لوگو! اللہ سے ڈرو"۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ تاسف <span class="example-label">EXAMPLE</span></div>
+        <p>دکھ کے لیے۔ مثال: "افسوس! وقت گزر گیا"۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">حروفِ تحسین <span class="example-label">EXAMPLE</span></div>
+        <p>شاباش کے لیے۔ مثال: "واہ واہ! کیا کمال کر دیا"۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="topic-card" id="topic5">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۵</div>
+      <div class="card-title">تراکیب اور جملہ سازی (مرکبات)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="sub-heading">مرکبِ ناقص</div>
+        <div class="def-box">وہ الفاظ کا مجموعہ جس سے پورا مطلب سمجھ نہ آئے:</div>
+
+        <p>• <strong>مرکبِ اضافی:</strong> اسلم کی کتاب، باغ کا پھول۔</p>
+        <p>• <strong>مرکبِ توصیفی:</strong> نیک لڑکا، ٹھنڈا پانی۔</p>
+        <p>• <strong>مرکبِ عطفی:</strong> شب و روز، زمین اور آسمان۔</p>
+        <p>• <strong>مرکبِ عددی:</strong> پانچ قلم، سو روپے (عدد اور معدود)۔</p>
+        <p>• <strong>مرکبِ جاری:</strong> گھر تک، چھت پر (حرفِ جار کے ساتھ)۔</p>
+        <p>• <strong>مرکبِ تمیزی:</strong> دس کلو چینی، دو گز کپڑا۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">مرکبِ تام (جملہ)</div>
+
+        <div class="def-box">
+          <strong>جملہ اسمیہ:</strong> جس میں مسند الیہ اور مسند دونوں اسم ہوں۔<br>
+          اجزاء: مبتدا (اسلم) + خبر (ذہین) + فعلِ ناقص (ہے)۔
+        </div>
+
+        <div class="def-box">
+          <strong>جملہ فعلیہ:</strong> جس میں مسند فعل ہو۔<br>
+          اجزاء: فاعل (احمد نے) + مفعول (آم) + فعلِ تام (کھایا)۔
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 6 -->
+  <div class="topic-card" id="topic6">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۶</div>
+      <div class="card-title">علمِ بیان و بدیع (ادبی قواعد)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="sub-heading">تشبیہ</div>
+        <div class="def-box">ایک چیز کو کسی مشترک خوبی کی وجہ سے دوسری جیسا قرار دینا۔</div>
+        <p><strong>ارکان:</strong> مشبہ (جس کو تشبیہ دی جائے)، مشبہ بہ (جس سے تشبیہ دی جائے)، حرفِ تشبیہ (طرح، سا)، وجہِ شبہ (خوبی)، غرضِ تشبیہ (مقصد)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">استعارہ</div>
+        <div class="def-box">لفظ کو مجازی معنوں میں استعمال کرنا، گویا وہ چیز وہی بن جائے۔</div>
+        <p><strong>ارکان:</strong> مستعار لہ (جس کے لیے)، مستعار منہ (جس سے ادھار لیا جائے)، وجہِ جامع۔</p>
+        <p>مثال: "ماں نے کہا: میرا چاند آ گیا"۔ (یہاں چاند استعارہ ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">مجازِ مرسل <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">حقیقی اور مجازی معنوں میں تشبیہ کا تعلق نہ ہونا۔</div>
+        <p>مثال: "بادل خوب برسا"۔ (حقیقت میں بادل نہیں، پانی برستا ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">کنایہ <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">ایسی بات جس کے چھپے ہوئے معنی مراد ہوں۔</div>
+        <p>مثال: "وہ سفید ریش ہے" (یعنی وہ بوڑھا ہے)۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">صنائع بدائع</div>
+        <p>• <strong>تلمیح:</strong> تاریخی یا مذہبی واقعے کا ذکر۔ (مثال: آتشِ نمرود)۔</p>
+        <p>• <strong>حسنِ تعلیل:</strong> کسی بات کی شاعرانہ وجہ بیان کرنا۔</p>
+        <p>• <strong>صنعتِ تضاد:</strong> الٹ الفاظ کا استعمال۔ (مثال: زندگی، موت)۔</p>
+        <p>• <strong>مراعات النظیر:</strong> ایک لفظ کی مناسبت سے دوسرے الفاظ لانا۔ (مثال: باغ، بلبل، پھول)۔</p>
+        <p>• <strong>لف و نشر:</strong> پہلے کچھ چیزیں بیان کرنا پھر ان کی ترتیب سے تفصیل دینا۔</p>
+        <p>• <strong>تکرارِ لفظی:</strong> ایک ہی لفظ کا بار بار آنا۔ (مثال: کبھی کبھی)۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 7 -->
+  <div class="topic-card" id="topic7">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۷</div>
+      <div class="card-title">رموزِ اوقاف (Punctuation Marks)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+        <div class="def-box">
+          <p>• <strong>سکتہ (،):</strong> مختصر ٹھہراؤ — مثال: اسلم، اکرم اور علی۔</p>
+          <div class="metal-divider"></div>
+          <p>• <strong>ختمہ (۔):</strong> جملے کے آخر میں — مثال: وہ چلا گیا ہے۔</p>
+          <div class="metal-divider"></div>
+          <p>• <strong>رابطہ (:):</strong> کسی قول سے پہلے — مثال: قائد اعظم نے فرمایا:</p>
+          <div class="metal-divider"></div>
+          <p>• <strong>واوین (" "):</strong> کسی کی بات جوں کی توں نقل کرنے کے لیے۔</p>
+          <div class="metal-divider"></div>
+          <p>• <strong>قوسین ( ):</strong> جملہ معترضہ یا اضافی بات کے لیے۔</p>
+          <div class="metal-divider"></div>
+          <p>• <strong>فجائیہ/ندائیہ (!):</strong> جذبات یا پکارنے کے لیے — مثال: واہ!، اے بھائی!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 8 -->
+  <div class="topic-card" id="topic8">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۸</div>
+      <div class="card-title">امتحانی معروضی قواعد (MCQs Special)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="sub-heading">واحد جمع</div>
+        <div class="def-box">
+          واحد کی شکل برقرار رہے تو <strong>جمع سالم</strong> (مسلم سے مسلمین)، شکل بدل جائے تو <strong>جمع مکسر</strong> (کتاب سے کتب)۔
+        </div>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">سابقے اور لاحقے</div>
+        <div class="def-box">
+          لفظ سے <strong>پہلے</strong> لگنے والے <strong>سابقے</strong> (مثلاً: باادب) اور <strong>بعد میں</strong> لگنے والے <strong>لاحقے</strong> (مثلاً: ضرورت مند)۔
+        </div>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">مطابقت <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">فاعل کے مطابق فعل کا استعمال۔</div>
+        <p>مثال: لڑکے کرکٹ کھیلتے ہیں۔</p>
+
+        <div class="metal-divider"></div>
+
+        <div class="sub-heading">تذکیر و تانیث <span class="example-label">EXAMPLE</span></div>
+        <div class="def-box">بے جان چیزوں کا استعمال۔</div>
+        <p>مثال: قلم ٹوٹ گیا، کتاب کھو گئی۔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 9 -->
+  <div class="topic-card" id="topic9">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-num">۹</div>
+      <div class="card-title">انشاء پردازی (تحریری مہارتیں)</div>
+      <div class="card-toggle">▼</div>
+    </div>
+    <div class="card-body">
+      <div class="card-body-inner">
+
+        <div class="def-box">
+          <strong>مضمون نگاری:</strong> کسی عنوان پر خیالات کا مربوط اظہار۔
+        </div>
+        <div class="metal-divider"></div>
+        <div class="def-box">
+          <strong>خط و درخواست:</strong> مخصوص خاکہ (Pattern) کی پیروی۔
+        </div>
+        <div class="metal-divider"></div>
+        <div class="def-box">
+          <strong>تلخیص نگاری:</strong> عبارت کو ایک تہائی (1/3) کر کے لکھنا اور عنوان دینا۔
+        </div>
+        <div class="metal-divider"></div>
+        <div class="def-box">
+          <strong>آپ بیتی:</strong> کسی بے جان چیز یا جانور کی زبانی اس کی کہانی۔
+        </div>
+        <div class="metal-divider"></div>
+        <div class="def-box">
+          <strong>تفہیمِ عبارت:</strong> عبارت پڑھ کر سوالات کے جوابات دینا۔
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end content-wrapper -->
+
+<div class="footer">
+  ARSLAN &amp; RATHORE GO COOK! &nbsp;|&nbsp; اردو قواعد · FBISE · مطالعہ گاہ
+</div>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Toggle card
+  function toggleCard(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.card-toggle');
+    body.classList.toggle('open');
+    toggle.classList.toggle('open');
+  }
+
+  // Smooth scroll to section
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Auto open card
+      const header = el.querySelector('.card-header');
+      const body = el.querySelector('.card-body');
+      const toggle = el.querySelector('.card-toggle');
+      if (!body.classList.contains('open')) {
+        body.classList.add('open');
+        toggle.classList.add('open');
+      }
+    }
+  }
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const max = document.body.scrollHeight - window.innerHeight;
+    const pct = Math.round((scrolled / max) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  // Intersection Observer for card animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.topic-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.05) + 's';
+    observer.observe(card);
+  });
+
+  // Floating particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 4 + 2;
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${6+Math.random()*12}s;
+      animation-delay:${Math.random()*10}s;
+      background: ${Math.random()>0.5 ? '#ff2d78' : '#f5c9a0'};
+      box-shadow: 0 0 ${size*2}px ${Math.random()>0.5 ? '#ff2d78' : '#f5c9a0'};
+    `;
+    container.appendChild(p);
+  }
+</script>
+</body>
+</html>
